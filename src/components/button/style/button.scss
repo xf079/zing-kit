@@ -1,0 +1,41 @@
+@import "../../styled/_variables.scss";
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap:12px;
+  font-size: var(--btn-font-size,$font-size-lg);
+  font-weight: var(--btn-font-weight,$font-weight-bold);
+  background-color: var(--btn-default-color,$gray-3);
+  height: var(--btn-height,96px);
+  padding:0 32px;
+  box-sizing: border-box;
+  position: relative;
+  &:after{
+    display: none;
+  }
+  &:hover,&:active{
+    background-color: var(--btn-hover-color,$gray-5)!important;
+  }
+  &-primary{
+    background-color: var(--btn-primary-color,$primary);
+    color: var(--btn-primary-text-color,$white);
+  }
+  &-success{
+    background-color: var(--btn-success-color,$success);
+    color: var(--btn-success-text-color,$white);
+  }
+
+  &-block{
+    width:100%;
+  }
+  &-placeholder{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    opacity: 0;
+  }
+}
