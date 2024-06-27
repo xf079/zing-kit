@@ -1,0 +1,19 @@
+@import "./components/index";
+
+.zing-block{
+  display: flex;
+  flex-direction: column;
+  &__title{
+    font-size: 28px;
+    font-weight: 600;
+    padding:36px 24px 24px;
+    color: #bfbfbf;
+  }
+  &__content{
+    padding:0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    column-gap: 24px;
+  }
+}

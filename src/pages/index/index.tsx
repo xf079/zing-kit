@@ -1,8 +1,7 @@
-import { View, Text } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import { useLoad } from "@tarojs/taro";
 
 import { Button } from "@zing-kit/core";
-import "./index.scss";
 
 export default function Index() {
   useLoad(() => {
@@ -10,9 +9,25 @@ export default function Index() {
   });
 
   return (
-    <View className="index">
-      <Button color='primary' block>你好</Button>
-      <Text>Hello world!</Text>
+    <View className='index'>
+      <Button>
+        你好
+      </Button>
+      <Button variant='outlined'>
+        你好
+      </Button>
+      <Button primary>
+        你好
+      </Button>
+      <Button primary block>
+        你好
+      </Button>
+      <Button primary block shape='round'>
+        你好
+      </Button>
+      <Button primary>
+        你好
+      </Button>
     </View>
   );
 }
