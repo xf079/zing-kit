@@ -1,5 +1,6 @@
-import { View } from "@tarojs/components";
+import { Image, View } from "@tarojs/components";
 import { Button } from "@zing-kit/core";
+import { Search } from "@zing-kit/icons";
 
 definePageConfig({
   navigationBarTitleText: "Button",
@@ -8,6 +9,8 @@ definePageConfig({
 export default function ButtonPage() {
   return (
     <View>
+      <Search rotate={90} size={520} />
+      <View className='icon' style={{ color: "red" }}></View>
       <View className='zing-block'>
         <View className='zing-block__title'>按钮颜色</View>
         <View className='zing-block__content'>
@@ -82,17 +85,25 @@ export default function ButtonPage() {
           <Button>默认按钮</Button>
           <Button size='small'>默认按钮</Button>
           <Button size='tiny'>默认按钮</Button>
-          <Button size='large' primary>默认按钮</Button>
+          <Button size='large' primary>
+            默认按钮
+          </Button>
           <Button primary>默认按钮</Button>
-          <Button size='small' primary>默认按钮</Button>
-          <Button size='tiny' primary>默认按钮</Button>
+          <Button size='small' primary>
+            默认按钮
+          </Button>
+          <Button size='tiny' primary>
+            默认按钮
+          </Button>
         </View>
       </View>
       <View className='zing-block'>
         <View className='zing-block__title'>块级按钮</View>
         <View className='zing-block__content'>
           <Button block>默认按钮</Button>
-          <Button block primary>默认按钮</Button>
+          <Button block primary>
+            默认按钮
+          </Button>
         </View>
       </View>
     </View>

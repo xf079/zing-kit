@@ -24,7 +24,8 @@
       // TS5090 leading './'
       "@/*": ["./src/*"],
       "@zing-kit/core": ["./src/components"],
-      "@zing-kit/hooks": ["./src/hooks"]
+      "@zing-kit/hooks": ["./src/hooks"],
+      "@zing-kit/icons": ["./src/icons"],
     }
   },
   "include": ["./src", "./types", "./config"],

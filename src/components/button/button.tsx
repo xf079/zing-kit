@@ -203,7 +203,7 @@ const ZButton: React.FC<IZButtonProps> = (props) => {
       {...restProps}
     >
       {children}
-      <Button className='btn-placeholder' />
+      <Button className={prefixCls("btn-placeholder")} />
     </View>
   );
 };
