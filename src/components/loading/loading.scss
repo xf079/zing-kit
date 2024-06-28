@@ -1,4 +1,4 @@
-@import "../../styled/_variables.scss";
+@import "../styled/variables";
 
 .#{$prefix}loading {
   display: inline-flex;
@@ -11,15 +11,16 @@
   &-circular {
     position: relative;
     box-sizing: border-box;
-    width: $height-md;
     max-width: 100%;
+    width: var(--loading-size, $height-md);
     height: var(--loading-size, $height-md);
     max-height: 100%;
   }
 
-
   &-spinner {
-    animation: #{$prefix}-rotate $animation-duration-base steps(12) infinite;
+    animation: #{$prefix}rotate
+      var(--loading-animation-duration, $animation-duration-time) steps(12)
+      infinite;
 
     &__item {
       position: absolute;
@@ -33,7 +34,7 @@
         width: 2px * $hd;
         height: 25%;
         margin: 0 auto;
-        content: ' ';
+        content: " ";
         background-color: currentColor;
         border-radius: 40%;
       }
@@ -49,10 +50,10 @@
   }
 
   &-circular {
-    border: var(--loading-circular-width,$border-width-base) solid transparent;
+    border: var(--loading-circular-width, $border-width-base * 2) solid transparent;
     border-top-color: currentColor;
     border-radius: 100%;
-    animation: #{$prefix}-rotate $animation-duration-base linear infinite;
+    animation: #{$prefix}rotate 0.8s linear infinite;
   }
 
   &-text {
@@ -68,8 +69,8 @@
 
   &-horizontal {
     flex-direction: column;
-    .#{$prefix}loading-text{
-      margin:var(--loading-text-margin, $gap-md) 0 0;
+    .#{$prefix}loading-text {
+      margin: var(--loading-text-margin, $gap-md) 0 0;
     }
   }
 }

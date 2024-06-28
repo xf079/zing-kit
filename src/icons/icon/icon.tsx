@@ -13,12 +13,11 @@ interface ZIconProps extends Omit<ViewProps, "style" | "className"> {
   color?: string;
 }
 
-const ZIcon = (props: ZIconProps) => {
+const ZingIcon = (props: ZIconProps) => {
   const { source, size = 30, color, rotate, spin, children, ...restProps } = props;
   const rootStyle = useMemo(
     () => ({
-      maskImage:`url(${source})`,
-      '-webkit-mask-image':`url(${source})`,
+      '--icon-url': `url(${source})`,
       width: addUnitPx(size) || "",
       height: addUnitPx(size) || "",
       color: color || "red",
@@ -39,7 +38,7 @@ const ZIcon = (props: ZIconProps) => {
 
 const createZingIconComponent = (source: string) => {
   function ZingIconWrapper(props: ZIconProps) {
-    return <ZIcon {...props} source={source} />;
+    return <ZingIcon {...props} source={source} />;
   }
 
   ZingIconWrapper[ICON_TYPE] = ICON_TYPE;

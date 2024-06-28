@@ -66,10 +66,10 @@ $line-height-md: 20px * $hd;
 $line-height-lg: 22px * $hd;
 
 // gap
-$gap-xs: 4px * $hd;
-$gap-sm: 8px * $hd;
-$gap-md: 12px * $hd;
-$gap-lg: 16px * $hd;
+$gap-xs: 2px * $hd;
+$gap-sm: 4px * $hd;
+$gap-md: 6px * $hd;
+$gap-lg: 8px * $hd;
 
 $font-weight-bold: 600;
 
@@ -83,6 +83,7 @@ $price-integer-font-family: avenir-heavy, pingfang sc, helvetica neue, arial,
 // Animation
 $animation-duration-base: 0.3s;
 $animation-duration-fast: 0.2s;
+$animation-duration-time: 0.8s;
 $animation-timing-function-enter: ease-out;
 $animation-timing-function-exit: ease-in;
 

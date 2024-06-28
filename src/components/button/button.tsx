@@ -1,17 +1,12 @@
-import React, {
-  Children,
-  cloneElement,
-  ReactElement,
-  ReactNode,
-  useMemo,
-} from "react";
+import React, { cloneElement, ReactElement, ReactNode, useMemo } from "react";
 import clsx from "clsx";
-import { isBoolean, map, size } from "lodash-es";
-import { ButtonProps, Button, View } from "@tarojs/components";
+import { isBoolean } from "lodash-es";
+import { ButtonProps, View } from "@tarojs/components";
 import { Loading, LoadingProps } from "../loading";
 import { prefixCls } from "../styled/prefix";
 import { isElementOf, isObjectElement } from "../utils/validate";
 import { BtnIconPosition, BtnShape, BtnSize, BtnVariant } from "./interface";
+import { cloneIconElement, isIconElement } from "../utils/util";
 
 export interface IZButtonProps extends Omit<ButtonProps, "size" | "type"> {
   /**
@@ -84,8 +79,7 @@ interface UseButtonChildrenOptions {
 }
 
 const appendButtonIconClassname = (icon?: ReactNode, className?: string) => {
-  // return isIconElement(icon) ? cloneIconElement(icon, { className }) : icon
-  return icon;
+  return isIconElement(icon) ? cloneIconElement(icon, { className }) : icon;
 };
 
 const useButtonLoading = (
@@ -93,36 +87,22 @@ const useButtonLoading = (
 ): ReactNode => {
   return useMemo(() => {
     if (isBoolean(loading) && loading) {
-      return (
-        <Loading
-          className={clsx(
-            prefixCls("btn-loading"),
-            prefixCls("button-loading__right")
-          )}
-        />
-      );
+      return <Loading className={clsx(prefixCls("btn-loading"))} />;
     }
 
     if (isObjectElement(loading as ReactNode)) {
       const { className, ...restProps } = loading as LoadingProps;
       return (
         <Loading
-          className={clsx(
-            prefixCls("btn-loading"),
-            prefixCls("btn-loading__right"),
-            className
-          )}
           {...restProps}
+          className={clsx(prefixCls("btn-loading"), className)}
         />
       );
     }
 
     if (isElementOf(loading as ReactNode, Loading)) {
       return cloneElement(loading as ReactElement, {
-        className: clsx(
-          prefixCls("btn-loading"),
-          prefixCls("btn-loading__right")
-        ),
+        className: clsx(prefixCls("btn-loading")),
       });
     }
 
@@ -130,39 +110,22 @@ const useButtonLoading = (
   }, [loading]);
 };
 
-function useButtonChildren(options: UseButtonChildrenOptions) {
+const useButtonChildren = (options: UseButtonChildrenOptions) => {
   const { loading, icon: iconProp, children, iconPosition } = options;
-  const childrenArray = Children.toArray(children);
-  const lastIndex = size(childrenArray) - 1;
 
-  const icon = appendButtonIconClassname(
-    iconProp,
-    prefixCls(iconPosition === "left" ? "btn-icon__right" : "btn-icon__left")
-  );
+  const icon = appendButtonIconClassname(iconProp, prefixCls(`btn-icon`));
 
   return (
     <>
       {loading}
       {iconPosition === "left" && icon}
-      {map(childrenArray, (child, index) => {
-        // if (isIconElement(child) && index === 0) {
-        //   return appendButtonIconClassname(child, prefixCls("btn-icon--right"));
-        // }
-        // if (isIconElement(child) && index === lastIndex) {
-        //   return appendButtonIconClassname(child, prefixCls("btn-icon--left"));
-        // }
-        return (
-          <View key={index} className={prefixCls("btn__text")}>
-            {child}
-          </View>
-        );
-      })}
+      <View className={prefixCls("btn-content")}>{children}</View>
       {iconPosition === "right" && icon}
     </>
   );
-}
+};
 
-const ZButton: React.FC<IZButtonProps> = (props) => {
+const Button: React.FC<IZButtonProps> = (props) => {
   const {
     variant,
     primary,
@@ -171,23 +134,21 @@ const ZButton: React.FC<IZButtonProps> = (props) => {
     block,
     disabled,
     icon,
-    iconPosition,
+    iconPosition = "left",
     loading: loadingProp,
     children: childrenProp,
     ...restProps
   } = props;
-
   const disabledState = useMemo(
     () => disabled || loadingProp,
     [disabled, loadingProp]
   );
-
   const loading = useButtonLoading(loadingProp);
   const children = useButtonChildren({
-    children: childrenProp,
     loading,
     icon,
     iconPosition,
+    children: childrenProp,
   });
 
   return (
@@ -203,9 +164,8 @@ const ZButton: React.FC<IZButtonProps> = (props) => {
       {...restProps}
     >
       {children}
-      <Button className={prefixCls("btn-placeholder")} />
     </View>
   );
 };
 
-export default ZButton;
+export default Button;

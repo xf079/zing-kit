@@ -42,7 +42,7 @@ const LoadingCircular = (props: LoadingProps) => {
   return <View className={prefixCls("loading-circular")} style={rootStyle} />;
 };
 
-const ZLoading = (props: LoadingProps) => {
+const Loading = (props: LoadingProps) => {
   const {
     className,
     size = 30,
@@ -57,14 +57,13 @@ const ZLoading = (props: LoadingProps) => {
       className={clsx(
         prefixCls("loading"),
         prefixCls(`loading-${horizontal}`),
-        prefixCls(`loading-${type}`),
         { [prefixCls("loading-horizontal")]: horizontal },
         className
       )}
       {...restProps}
     >
-      {type === "spinner" && <LoadingSpinner size={size} />}
       {type === "circular" && <LoadingCircular size={size} />}
+      {type === "spinner" && <LoadingSpinner size={size} />}
       {children && (
         <View className={prefixCls("loading-text")}>{children}</View>
       )}
@@ -72,4 +71,4 @@ const ZLoading = (props: LoadingProps) => {
   );
 };
 
-export default ZLoading;
+export default Loading;

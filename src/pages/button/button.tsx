@@ -1,6 +1,5 @@
-import { Image, View } from "@tarojs/components";
-import { Button } from "@zing-kit/core";
-import { Search } from "@zing-kit/icons";
+import { View } from "@tarojs/components";
+import {Button, Icon, Loading} from "@zing-kit/core";
 
 definePageConfig({
   navigationBarTitleText: "Button",
@@ -9,20 +8,20 @@ definePageConfig({
 export default function ButtonPage() {
   return (
     <View>
-      <Search rotate={90} size={520} />
-      <View className='icon' style={{ color: "red" }}></View>
+      <Loading />
+      <Loading type='spinner' />
       <View className='zing-block'>
-        <View className='zing-block__title'>按钮颜色</View>
+        <View className='zing-block__title'><Icon name='border' spin />按钮颜色</View>
         <View className='zing-block__content'>
-          <Button>默认按钮</Button>
-          <Button primary>主要按钮</Button>
+          <Button loading>默认按钮</Button>
+          <Button primary loading icon={<Icon name='minus-square-fill' />}>主要按钮</Button>
         </View>
       </View>
       <View className='zing-block'>
         <View className='zing-block__title'>文本按钮</View>
         <View className='zing-block__content'>
           <Button variant='text'>默认按钮</Button>
-          <Button variant='text' primary>
+          <Button variant='text' primary icon={<Icon name='minus-square-fill' />}>
             主要按钮
           </Button>
         </View>
@@ -31,7 +30,7 @@ export default function ButtonPage() {
         <View className='zing-block__title'>轮毂按钮</View>
         <View className='zing-block__content'>
           <Button variant='outlined'>默认按钮</Button>
-          <Button variant='outlined' primary>
+          <Button variant='outlined' primary icon={<Icon name='minus-square-fill' />}>
             主要按钮
           </Button>
         </View>

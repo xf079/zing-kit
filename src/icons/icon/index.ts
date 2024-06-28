@@ -1,1 +1,1 @@
-export { default as createVanIconComponent } from "./icon";
+export { default as createVanIconComponent,ICON_TYPE } from "./icon";
