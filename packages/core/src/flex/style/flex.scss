@@ -1,0 +1,53 @@
+@import '../../styled/variables';
+
+.#{$prefix}flex {
+  display: flex;
+  flex-direction: row;
+  &-column {
+    flex-direction: column;
+  }
+  &-start {
+    justify-content: flex-start;
+  }
+  &-end {
+    justify-content: flex-end;
+  }
+  &-center {
+    justify-content: center;
+  }
+  &-between {
+    justify-content: space-between;
+  }
+  &-around {
+    justify-content: space-around;
+  }
+
+  &-align-start {
+    align-items: flex-start;
+  }
+
+  &-align-end {
+    align-items: flex-end;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+
+  &-align-baseline {
+    align-items: baseline;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+  &-wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+  &-content {
+    flex: 1;
+  }
+}
