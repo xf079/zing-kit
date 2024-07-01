@@ -1,12 +1,18 @@
 import { useMemo } from 'react';
-import { debounce } from '../utils/lodash-polyfill';
+import debounce from 'lodash/debounce';
 import type { DebounceOptions } from '../useDebounce/debounceOptions';
 import useLatest from '../useLatest';
 import useUnmount from '../useUnmount';
 
 type noop = (...args: any[]) => any;
 
-export default function useDebounceFn<T extends noop>(fn: T, options?: DebounceOptions) {
+export type DebounceFn<T extends noop> = T & {
+  cancel: () => void;
+  run: (...args: Parameters<T>) => ReturnType<T>;
+  flush: () => ReturnType<T>;
+};
+
+function useDebounceFn<T extends noop>(fn: T, options?: DebounceOptions) {
   const fnRef = useLatest(fn);
 
   const wait = options?.wait ?? 1000;
@@ -18,9 +24,9 @@ export default function useDebounceFn<T extends noop>(fn: T, options?: DebounceO
           return fnRef.current(...args);
         },
         wait,
-        options
+        options,
       ),
-    []
+    [],
   );
 
   useUnmount(() => {
@@ -30,6 +36,8 @@ export default function useDebounceFn<T extends noop>(fn: T, options?: DebounceO
   return {
     run: debounced,
     cancel: debounced.cancel,
-    flush: debounced.flush
+    flush: debounced.flush,
   };
 }
+
+export default useDebounceFn;

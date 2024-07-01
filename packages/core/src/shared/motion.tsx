@@ -1,7 +1,7 @@
-import { View,Text } from '@tarojs/components';
-import { motion } from 'framer-motion';
+import {View, Text, ViewProps, TextProps} from '@tarojs/components';
+import {CustomDomComponent, motion} from 'framer-motion';
 
 
-export const MotionView  = motion(View);
+export const MotionView:CustomDomComponent<ViewProps>  = motion(View);
 
-export const MotionText = motion(Text);
+export const MotionText:CustomDomComponent<TextProps> = motion(Text);

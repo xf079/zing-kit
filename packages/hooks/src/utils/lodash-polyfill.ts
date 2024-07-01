@@ -1,4 +1,3 @@
-import debounce from 'lodash/debounce';
 
 function isNodeOrWeb() {
   const freeGlobal =
@@ -14,4 +13,3 @@ if (!isNodeOrWeb()) {
   global.Date = Date;
 }
 
-export { debounce };

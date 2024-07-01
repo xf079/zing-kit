@@ -1,0 +1,24 @@
+@import "../../styled/variables";
+
+.#{$prefix}segmented{
+  display: inline-flex;
+  background-color: var(--segmented-background-color, $background-default-color);
+  padding:var(--segmented-padding, 4px);
+  border-radius: var(--segmented-border-radius, $border-radius-md);
+  &-item{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--segmented-color, $text-color-3);
+    font-size: var(--segmented-font-size, $font-size-md);
+    font-weight: var(--segmented-font-weight, $font-weight-bold);
+    line-height: var(--segmented-line-height, $line-height-md);
+    padding-inline: var(--segmented-item-padding,$padding-md);
+    height: var(--segmented-item-height, $height-md*1.5);
+    &-active{
+      color: var(--segmented-active-color, $black);
+      background-color: var(--segmented-active-background-color, $background-color-light);
+      border-radius: var(--segmented-active-border-radius, $border-radius-md);
+    }
+  }
+}

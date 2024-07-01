@@ -22,9 +22,9 @@
   "repository": "https://github.com/alibaba/hooks",
   "homepage": "https://github.com/alibaba/hooks",
   "scripts": {
-    "build": "gulp --isolatedModules true",
-    "dev": "gulp --watch true --isolatedModules true",
-    "dev:ts": "gulp --watch true --skip true --isolatedModules true"
+    "build": "gulp --isolatedModules true --no-respawning",
+    "dev": "gulp --watch true --isolatedModules true --no-respawning",
+    "dev:ts": "gulp --watch true --skip true --isolatedModules true --no-respawning"
   },
   "files": [
     "dist",
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^16.0.0",
+    "@types/lodash": "4.14.202",
     "webpack": "5.78.0"
   },
   "engines": {

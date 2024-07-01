@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-function useLatest<T>(value: T) {
+function useLatest<T extends any>(value: T) {
   const ref = useRef(value);
   ref.current = value;
 
