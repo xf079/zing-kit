@@ -9,7 +9,7 @@ export type LoadingType = 'spinner' | 'dot';
 
 export interface LoadingProps extends ViewProps {
   type?: LoadingType;
-  size?: number | string;
+  size?: number;
   color?: string;
   description?: string;
   horizontal?: boolean;

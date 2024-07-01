@@ -59,8 +59,8 @@ const LoadingDot: React.FC<LoadingDotProps> = (props) => {
           transition={{
             duration: 0.5,
             repeat: Infinity,
-            delay: 0.2 * index,
-            ease: 'easeInOut',
+            delay: 0.4 * index,
+            ease: 'linear',
           }}
         />
       ))}

@@ -1,6 +1,10 @@
 {
   "functions": [
     {
+      "name": "backdrop",
+      "docs": "https://ahooks.js.org/components/backdrop"
+    },
+    {
       "name": "button",
       "docs": "https://ahooks.js.org/components/button"
     },
@@ -15,6 +19,10 @@
     {
       "name": "loading",
       "docs": "https://ahooks.js.org/components/loading"
+    },
+    {
+      "name": "popup",
+      "docs": "https://ahooks.js.org/components/popup"
     },
     {
       "name": "segmented",
