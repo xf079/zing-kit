@@ -1,8 +1,8 @@
-import { View, ViewProps } from '@tarojs/components';
-import { ReactNode } from 'react';
+import { View, type ViewProps } from '@tarojs/components';
+import React,{ type ReactNode } from 'react';
 import clsx from 'clsx';
-import { prefixCls } from '@/components/styled/prefix';
 import { useControllableValue } from '@zing-kit/hooks';
+import { prefixCls } from '../shared/prefix';
 
 export interface SegmentedItem {
   value: string | number;

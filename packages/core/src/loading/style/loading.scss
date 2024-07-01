@@ -1,0 +1,39 @@
+@import '../../styled/variables';
+
+.#{$prefix}loading {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--loading-color, $text-color-4);
+
+  &-text {
+    margin-left: var(--loading-, $padding-md);
+    font-size: var(--loading-font-size, $font-size-md);
+    line-height: var(--loading-line-height, $line-height-md);
+    color: var(--loading-text-color, $text-color-4);
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &-horizontal {
+    flex-direction: column;
+    .#{$prefix}loading-text {
+      margin: var(--loading-text-margin, $gap-md) 0 0;
+    }
+  }
+
+  &-dot {
+    display: inline-flex;
+    justify-content: space-between;
+    gap: calc($font-size-md / 5);
+    &-item {
+      width: calc($font-size-md / 5);
+      height: calc($font-size-md / 5);
+      background-color: var(--loading-dot-color, $primary-color);
+      border-radius: 50%;
+    }
+  }
+}

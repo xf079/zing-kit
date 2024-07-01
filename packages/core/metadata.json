@@ -1,0 +1,24 @@
+{
+  "functions": [
+    {
+      "name": "button",
+      "docs": "https://ahooks.js.org/components/button"
+    },
+    {
+      "name": "flex",
+      "docs": "https://ahooks.js.org/components/flex"
+    },
+    {
+      "name": "icon",
+      "docs": "https://ahooks.js.org/components/icon"
+    },
+    {
+      "name": "loading",
+      "docs": "https://ahooks.js.org/components/loading"
+    },
+    {
+      "name": "segmented",
+      "docs": "https://ahooks.js.org/components/segmented"
+    }
+  ]
+}

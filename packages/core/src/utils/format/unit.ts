@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react';
-import { isNumber, isString } from 'lodash-es';
+import isNumber from 'lodash/isNumber';
+import isString from 'lodash/isString';
 import { getSystemInfoSync } from '@tarojs/taro';
 
 export function addUnitPx(value?: string | number): string {
@@ -7,13 +8,13 @@ export function addUnitPx(value?: string | number): string {
 }
 
 export function getSizeStyle(
-  originSize?: string | number
+  originSize?: string | number,
 ): CSSProperties | undefined {
   if (isNumber(originSize) || isString(originSize)) {
     const size = addUnitPx(originSize);
     return {
       width: size,
-      height: size
+      height: size,
     };
   }
   return {};

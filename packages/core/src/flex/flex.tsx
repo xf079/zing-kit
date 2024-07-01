@@ -1,7 +1,7 @@
-import { CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
 import clsx from 'clsx';
 import { View, ViewProps } from '@tarojs/components';
-import { prefixCls } from '../styled/prefix';
+import { prefixCls } from '../shared/prefix';
 import { addUnitPx } from '../utils/format/unit';
 
 export interface FlexProps extends ViewProps {
@@ -40,14 +40,14 @@ const Flex = (props: FlexProps) => {
         prefixCls(`flex-${justify}`),
         prefixCls(`flex-align-${align}`),
         {
-          [prefixCls('flex-column')]: column
+          [prefixCls('flex-column')]: column,
         },
-        className
+        className,
       )}
       style={{
         gap: addUnitPx(gap),
         columnGap: addUnitPx(columnGap),
-        ...style
+        ...style,
       }}
       {...restProps}
     >

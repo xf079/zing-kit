@@ -1,1 +1,1 @@
-import './index.scss';
+import './flex.scss';

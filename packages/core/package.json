@@ -1,10 +1,23 @@
 {
   "name": "@zing-kit/core",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "taro components library",
+  "module": "./es/index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "authors": {
+    "name": "xfo79k",
+    "email": "xfo79k@gmail.com"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": "https://github.com/alibaba/hooks",
+  "homepage": "https://github.com/alibaba/hooks",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp --isolatedModules true",
+    "dev": "gulp --watch true --isolatedModules true --no-respawning",
+    "dev:ts": "gulp --watch true --skip true --isolatedModules true --no-respawning"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +25,16 @@
   "volta": {
     "node": "18.20.3",
     "yarn": "1.22.22"
+  },
+  "dependencies": {
+    "@tarojs/components": "3.6.32",
+    "@tarojs/taro": "3.6.32",
+    "@zing-kit/hooks": "workspace:*",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.2.12",
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "tslib": "^2.4.1"
   }
 }

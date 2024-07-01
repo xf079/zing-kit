@@ -2,20 +2,18 @@ import {
   isValidElement,
   JSXElementConstructor,
   ReactElement,
-  ReactNode
+  ReactNode,
 } from 'react';
-import {
-  endsWith,
-  get,
-  isArray,
-  isEmpty,
-  isFunction,
-  isNull,
-  isNumber,
-  isObject,
-  isString,
-  isUndefined
-} from 'lodash-es';
+import endsWith from 'lodash/endsWith';
+import get from 'lodash/get';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import isFunction from 'lodash/isFunction';
+import isNull from 'lodash/isNull';
+import isNumber from 'lodash/isNumber';
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
+import isUndefined from 'lodash/isUndefined';
 
 export function isNoneElement(node: ReactNode) {
   return isUndefined(node) || isNull(node);
@@ -31,7 +29,7 @@ export function isObjectElement(node?: ReactNode) {
 
 export function isElementOf(
   node?: ReactNode,
-  type?: JSXElementConstructor<any>
+  type?: JSXElementConstructor<any>,
 ) {
   if (isValidElement(node)) {
     const element = node as ReactElement;
@@ -51,5 +49,5 @@ export function isElementOf(
   return false;
 }
 
-export const isDef = <T,>(val: T): val is NonNullable<T> =>
+export const isDef = <T>(val: T): val is NonNullable<T> =>
   val !== undefined && val !== null;

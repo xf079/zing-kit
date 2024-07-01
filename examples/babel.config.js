@@ -6,5 +6,16 @@ module.exports = {
       framework: 'react',
       ts: true
     }]
+  ],
+
+  plugins: [
+    [
+      'import',
+      {
+        libraryName: '@zing-kit/core',
+        style: true
+      },
+      '@zing-kit/core'
+    ]
   ]
 }

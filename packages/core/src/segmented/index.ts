@@ -1,5 +1,8 @@
-export {
-  default as Segmented,
+import Segmented, {
+  type SegmentedItem,
   type SegmentedProps,
-  type SegmentedItem
 } from './segmented';
+
+export type { SegmentedItem, SegmentedProps };
+
+export default Segmented;

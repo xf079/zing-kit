@@ -1,21 +1,27 @@
 import React, { cloneElement, ReactElement, ReactNode, useMemo } from 'react';
 import clsx from 'clsx';
-import { isBoolean } from 'lodash-es';
-import { ButtonProps, View } from '@tarojs/components';
-import { Loading, LoadingProps } from '../loading';
-import { prefixCls } from '../styled/prefix';
+import isBoolean from 'lodash/isBoolean';
+import { type ButtonProps as TButtonProps, View } from '@tarojs/components';
+import Loading, { type LoadingProps } from '../loading';
+import { prefixCls } from '../shared/prefix';
 import { isElementOf, isObjectElement } from '../utils/validate';
-import { BtnIconPosition, BtnShape, BtnSize, BtnVariant } from './interface';
 import { cloneIconElement, isIconElement } from '../utils/util';
+import type { CommonSize } from '../shared/types';
 
-export interface IZButtonProps extends Omit<ButtonProps, 'size' | 'type'> {
+export type Variant = 'contained' | 'text' | 'outlined';
+
+export type Shape = 'square' | 'round';
+
+export type IconPosition = 'left' | 'right';
+
+export interface ButtonProps extends Omit<TButtonProps, 'size' | 'type'> {
   /**
    * 按钮类型
    * @default 'contained'
    * @description 按钮类型
    * @type string
    */
-  variant?: BtnVariant;
+  variant?: Variant;
 
   /**
    * 是否为主要按钮
@@ -35,14 +41,14 @@ export interface IZButtonProps extends Omit<ButtonProps, 'size' | 'type'> {
    * @description 按钮形状
    * @type string
    */
-  shape?: BtnShape;
+  shape?: Shape;
   /**
    * 按钮大小
    * @default 'normal'
    * @description 按钮大小
    * @type string
    */
-  size?: BtnSize;
+  size?: CommonSize;
   /**
    * 按钮禁用状态
    * @default false
@@ -68,14 +74,14 @@ export interface IZButtonProps extends Omit<ButtonProps, 'size' | 'type'> {
    * @description 按钮内容
    * @type ReactNode
    */
-  iconPosition?: BtnIconPosition;
+  iconPosition?: IconPosition;
 }
 
 interface UseButtonChildrenOptions {
   children?: ReactNode;
   loading?: ReactNode;
   icon?: ReactNode;
-  iconPosition?: BtnIconPosition;
+  iconPosition?: IconPosition;
 }
 
 const appendButtonIconClassname = (icon?: ReactNode, className?: string) => {
@@ -83,11 +89,11 @@ const appendButtonIconClassname = (icon?: ReactNode, className?: string) => {
 };
 
 const useButtonLoading = (
-  loading?: boolean | LoadingProps | ReactElement
+  loading?: boolean | LoadingProps | ReactElement,
 ): ReactNode => {
   return useMemo(() => {
     if (isBoolean(loading) && loading) {
-      return <Loading className={clsx(prefixCls('btn-loading'))} />;
+      return <Loading className={clsx(prefixCls('btn-loading'))}/>;
     }
 
     if (isObjectElement(loading as ReactNode)) {
@@ -102,7 +108,7 @@ const useButtonLoading = (
 
     if (isElementOf(loading as ReactNode, Loading)) {
       return cloneElement(loading as ReactElement, {
-        className: clsx(prefixCls('btn-loading'))
+        className: clsx(prefixCls('btn-loading')),
       });
     }
 
@@ -125,7 +131,7 @@ const useButtonChildren = (options: UseButtonChildrenOptions) => {
   );
 };
 
-const Button: React.FC<IZButtonProps> = (props) => {
+const Button: React.FC<ButtonProps> = (props) => {
   const {
     variant,
     primary,
@@ -141,14 +147,14 @@ const Button: React.FC<IZButtonProps> = (props) => {
   } = props;
   const disabledState = useMemo(
     () => disabled || loadingProp,
-    [disabled, loadingProp]
+    [disabled, loadingProp],
   );
   const loading = useButtonLoading(loadingProp);
   const children = useButtonChildren({
     loading,
     icon,
     iconPosition,
-    children: childrenProp
+    children: childrenProp,
   });
 
   return (
@@ -159,7 +165,7 @@ const Button: React.FC<IZButtonProps> = (props) => {
         [prefixCls(`btn-${sizeProp}`)]: sizeProp,
         [prefixCls(`btn-${shape}`)]: shape,
         [prefixCls('btn-disabled')]: disabledState,
-        [prefixCls(`btn-block`)]: block
+        [prefixCls(`btn-block`)]: block,
       })}
       {...restProps}
     >

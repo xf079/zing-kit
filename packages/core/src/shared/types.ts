@@ -1,10 +1,10 @@
-export type BaseSize = 'large' | 'medium' | 'small' | 'tiny';
+export type CommonSize = 'large' | 'medium' | 'small' | 'tiny';
 
-export type IconSize = BaseSize | 'inherit' | number;
+export type CommonColor = 'default' | 'primary';
 
-export type BaseType = 'default' | 'primary';
+export type IconSize = CommonSize | 'inherit' | number;
 
-export type IconColor = BaseType | 'inherit' | string;
+export type IconColor = CommonColor | 'inherit' | string;
 
 export const ICON_PRESET_COLORS: IconColor[] = ['default', 'primary'];
 

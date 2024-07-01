@@ -1,74 +1,63 @@
-import { View, ViewProps } from '@tarojs/components';
-import { useMemo } from 'react';
-import { range } from 'lodash-es';
+import { View, type ViewProps, Text } from '@tarojs/components';
+import React from 'react';
 import clsx from 'clsx';
-import { prefixCls } from '../styled/prefix';
-import { addUnitPx } from '../utils/format/unit';
+import { prefixCls } from '../shared/prefix';
+import LoadingSpinner from './loading.spinner';
+import LoadingDot from './loading.dot';
 
-export type LoadingType = 'spinner' | 'circular';
+export type LoadingType = 'spinner' | 'dot';
 
 export interface LoadingProps extends ViewProps {
-  size?: number | string;
   type?: LoadingType;
+  size?: number | string;
+  color?: string;
+  description?: string;
   horizontal?: boolean;
 }
-
-const SpinLine = range(0, 12).map((key) => (
-  <View key={key} className={prefixCls('loading-spinner__item')} />
-));
-
-const LoadingSpinner = (props: LoadingProps) => {
-  const { size } = props;
-  const rootStyle = useMemo(
-    () => ({ width: addUnitPx(size), height: addUnitPx(size) }),
-    [size]
-  );
-  return (
-    <View className={prefixCls('loading-spinner')} style={rootStyle}>
-      {SpinLine}
-    </View>
-  );
-};
-
-const LoadingCircular = (props: LoadingProps) => {
-  const { size } = props;
-  const rootStyle = useMemo(
-    () => ({
-      width: addUnitPx(size) || '',
-      height: addUnitPx(size) || ''
-    }),
-    [size]
-  );
-  return <View className={prefixCls('loading-circular')} style={rootStyle} />;
-};
 
 const Loading = (props: LoadingProps) => {
   const {
     className,
+    type = 'spinner',
     size = 30,
-    type = 'circular',
+    color = 'currentColor',
     horizontal,
+    description,
     children,
     ...restProps
   } = props;
 
-  return (
+  const renderLoadingContent = () => (
     <View
       className={clsx(
-        prefixCls('loading'),
-        prefixCls(`loading-${horizontal}`),
-        { [prefixCls('loading-horizontal')]: horizontal },
-        className
+        prefixCls('loading-content'),
+        {
+          [prefixCls('loading-horizontal')]: horizontal,
+        },
+        className,
       )}
-      {...restProps}
     >
-      {type === 'circular' && <LoadingCircular size={size} />}
+      {type === 'dot' && <LoadingDot size={size} color={color} />}
       {type === 'spinner' && <LoadingSpinner size={size} />}
-      {children && (
-        <View className={prefixCls('loading-text')}>{children}</View>
+      {description && (
+        <Text className={prefixCls('loading-text')}>{description}</Text>
       )}
     </View>
   );
+
+  if (!children) {
+    return renderLoadingContent();
+  }
+
+  return (
+    <View className={clsx(prefixCls('loading'), className)} {...restProps}>
+      {renderLoadingContent()}
+      {children}
+    </View>
+  );
 };
+
+Loading.Dot = LoadingDot;
+Loading.Spinner = LoadingSpinner;
 
 export default Loading;

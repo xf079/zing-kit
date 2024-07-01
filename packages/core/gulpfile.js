@@ -1,40 +1,64 @@
 const commonConfig = require('../../gulpfile');
 const gulp = require('gulp');
-const { resolve } = require('path')
-const fsGlob = require('fast-glob')
-const fsExtra = require('fs-extra')
-const grayMaster = require('gray-matter')
+const fs = require('fs');
+const fse = require('fs-extra');
+const fg = require('fast-glob');
+const gm = require('gray-matter');
 
-async function generateMeta() {
+const excludeDir = ['utils', 'styled','shared'];
 
-    const srcset = ['src/use*']
+function camelToKebab(str) {
+    return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
 
-    const functions = srcset.map(src => fsGlob.sync(src, { onlyDirectories: true }).map(hook => {
-        const name = hook.replace(/(..\/ahooks\/)|(src\/)/g, '')
-        const docURI = `https://next-version-taro-hooks.vercel.app/site/hooks/${name}`
-        const mdFileURI = resolve(__dirname, hook, 'index.md')
-        let descriptionMd = name
-        if (fsExtra.existsSync(mdFileURI)) {
-            descriptionMd = fsExtra.readFileSync(mdFileURI, 'utf8')
-        }
-        const { content } = grayMaster(descriptionMd)
-        let description = ((content.replace(/\r\n/g, '\n').match(/# \w+[\s\n]+(.+?)(?:, |\. |\n|\.\n)/m) || [])[1] || '').trim()
-        description = description.charAt(0).toLowerCase() + description.slice(1);
-        return {
-            name,
-            docs: docURI,
-            description
-        }
-    })).flat().sort((a, b) => a.name.localeCompare(b.name))
-
-    return {
-        functions
+async function genDesc(mdPath) {
+    if (!fs.existsSync(mdPath)) {
+        return;
     }
+    const mdFile = fs.readFileSync(mdPath, 'utf8');
+    const { content } = gm(mdFile);
+    let description =
+      (content.replace(/\r\n/g, '\n').match(/# \w+[\s\n]+(.+?)(?:, |\. |\n|\.\n)/m) || [])[1] || '';
+
+    description = description.trim();
+    description = description.charAt(0).toLowerCase() + description.slice(1);
+    return description;
+}
+
+async function genMetaData() {
+    const metadata = {
+        functions: [],
+    };
+    const hooks = fg
+      .sync('src/*', {
+          onlyDirectories: true,
+      })
+      .map((hook) => hook.replace('src/', ''))
+      .filter((hook) => !excludeDir.includes(hook))
+      .sort();
+    await Promise.allSettled(
+      hooks.map(async (hook) => {
+          const description = await genDesc(`src/${hook}/index.en-US.md`);
+          return {
+              name: hook,
+              docs: `https://ahooks.js.org/components/${camelToKebab(hook)}`,
+              description,
+          };
+      }),
+    ).then((res) => {
+        metadata.functions = res.map((item) => {
+            if (item.status === 'fulfilled') {
+                return item.value;
+            }
+            return null;
+        });
+    });
+    return metadata;
 }
 
 gulp.task('metadata', async function () {
-    const metadata = await generateMeta()
-    await fsExtra.writeJSON('metadata.json', metadata, { spaces: 2 })
-})
+    const metadata = await genMetaData();
+    await fse.writeJson('metadata.json', metadata, { spaces: 2 });
+});
 
 exports.default = gulp.series(commonConfig.default, 'metadata');

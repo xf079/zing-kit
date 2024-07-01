@@ -1,6 +1,7 @@
-export {
-  default as Icon,
-  createZingIconComponent,
-  COMPONENT_TYPE as ICON_COMPONENT_TYPE,
-  type IconProps
-} from './icon';
+import Icon, { createZingIconComponent, type IconProps } from './icon';
+
+export type { IconProps };
+
+export { createZingIconComponent };
+
+export default Icon;

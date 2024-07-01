@@ -1,16 +1,16 @@
-import { View, ViewProps } from '@tarojs/components';
+import React, { type ComponentType, type CSSProperties } from 'react';
 import clsx from 'clsx';
-import { ComponentType, CSSProperties } from 'react';
-import { prefixCls } from '../styled/prefix';
+import { View, type ViewProps } from '@tarojs/components';
+import { prefixCls } from '../shared/prefix';
 import { addUnitPx } from '../utils/format/unit';
 import {
   IconSize,
   IconColor,
   ICON_PRESET_COLORS,
-  ICON_PRESET_SIZES
+  ICON_PRESET_SIZES,
 } from '../shared/types';
 
-export const COMPONENT_TYPE = Symbol('__iconType__');
+export const ICON_COMPONENT_TYPE = Symbol('__iconType__');
 
 export interface IconProps extends ViewProps {
   name: string;
@@ -45,7 +45,7 @@ const Icon = (props: IconProps) => {
       style={{
         color: presetColor ? undefined : color,
         fontSize: presetColor ? undefined : addUnitPx(size),
-        ...style
+        ...style,
       }}
       className={clsx(
         prefixCls('icon'),
@@ -53,22 +53,22 @@ const Icon = (props: IconProps) => {
         {
           [prefixCls('icon-spin')]: spin,
           [prefixCls(`icon-color__${color}`)]: presetColor,
-          [prefixCls(`icon-size__${size}`)]: presetSize
+          [prefixCls(`icon-size__${size}`)]: presetSize,
         },
-        className
+        className,
       )}
     />
   );
 };
 
-Icon[COMPONENT_TYPE] = COMPONENT_TYPE;
+Icon[ICON_COMPONENT_TYPE] = ICON_COMPONENT_TYPE;
 
 export const createZingIconComponent = (classPrefix: string) => {
   function ZingIconWrapper(props: IconProps) {
     return <Icon {...props} classPrefix={classPrefix} />;
   }
 
-  ZingIconWrapper[COMPONENT_TYPE] = COMPONENT_TYPE;
+  ZingIconWrapper[ICON_COMPONENT_TYPE] = ICON_COMPONENT_TYPE;
 
   return ZingIconWrapper as ComponentType<Omit<IconProps, 'classPrefix'>>;
 };

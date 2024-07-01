@@ -1,0 +1,50 @@
+@import '../../styled/variables';
+
+.#{$prefix}popup {
+  position: fixed;
+  z-index: var(--popup-index, 1200);
+  background-color: var(--popup-background-color, $white);
+  display: none;
+  &-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--popup-border-radius, $border-radius-md);
+  }
+  &-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    &.#{$prefix}popup-rounded {
+      border-top-left-radius: var(--popup-border-radius, $border-radius-md);
+      border-top-right-radius: var(--popup-border-radius, $border-radius-md);
+    }
+  }
+  &-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    &.#{$prefix}popup-rounded {
+      border-bottom-left-radius: var(--popup-border-radius, $border-radius-md);
+      border-bottom-right-radius: var(--popup-border-radius, $border-radius-md);
+    }
+  }
+  &-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    &.#{$prefix}popup-rounded {
+      border-top-right-radius: var(--popup-border-radius, $border-radius-md);
+      border-bottom-right-radius: var(--popup-border-radius, $border-radius-md);
+    }
+  }
+  &-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    &.#{$prefix}popup-rounded {
+      border-top-left-radius: var(--popup-border-radius, $border-radius-md);
+      border-bottom-left-radius: var(--popup-border-radius, $border-radius-md);
+    }
+  }
+}

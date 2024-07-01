@@ -11,7 +11,6 @@ const isSkipTS = argv.skip;
 const isolatedModules = argv.iso;
 
 gulp.task('clean', async function () {
-  await del('dist/**');
   await del('lib/**');
   await del('es/**');
 });
@@ -54,15 +53,26 @@ gulp.task('es', function () {
     .pipe(gulp.dest('es/'));
 });
 
+gulp.task('scss', function () {
+  return gulp
+    .src('src/**/*.scss')
+    .pipe(gulp.dest('es/'))
+    .pipe(gulp.dest('lib/'));
+});
+
 gulp.task('declaration', function () {
-  const tsProject  = ts.createProject('tsconfig.json', {
-    module: 'ESNext'
+  const tsProject = ts.createProject('tsconfig.json', {
+    module: 'ESNext',
   });
-  return tsProject.src().pipe(tsProject()).pipe(gulp.dest('es/')).pipe(gulp.dest('lib/'));
+  return tsProject
+    .src()
+    .pipe(tsProject())
+    .pipe(gulp.dest('es/'))
+    .pipe(gulp.dest('lib/'));
 });
 
 gulp.task('watch', function () {
-  const tasks = ['cjs', 'es'];
+  const tasks = ['cjs', 'es', 'scss'];
   if (!isSkipTS) {
     tasks.push('declaration');
   }
@@ -73,8 +83,8 @@ gulp.task('watch', function () {
   );
 });
 
-exports.watchSeries = gulp.series('cjs', 'es', 'declaration');
+exports.watchSeries = gulp.series('cjs', 'es', 'scss', 'declaration');
 
 exports.default = isWatch
   ? gulp.series('watch')
-  : gulp.series('clean', 'cjs', 'es', 'declaration');
+  : gulp.series('clean', 'cjs', 'es', 'scss', 'declaration');

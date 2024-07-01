@@ -1,7 +1,7 @@
-import { hasIn } from 'lodash-es';
-import clsx from 'clsx';
 import { cloneElement, isValidElement, ReactElement, ReactNode } from 'react';
-import { ICON_COMPONENT_TYPE, IconProps } from '../icon';
+import hasIn from 'lodash/hasIn';
+import clsx from 'clsx';
+import { ICON_COMPONENT_TYPE, IconProps } from '../icon/icon';
 
 export function isIconElement(node?: ReactNode): boolean {
   if (!isValidElement(node)) {
