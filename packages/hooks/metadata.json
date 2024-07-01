@@ -1,0 +1,203 @@
+{
+  "functions": [
+    {
+      "name": "useAsyncEffect",
+      "docs": "https://ahooks.js.org/hooks/use-async-effect",
+      "description": "useEffect support async function"
+    },
+    {
+      "name": "useBoolean",
+      "docs": "https://ahooks.js.org/hooks/use-boolean",
+      "description": "a hook that elegantly manages boolean state"
+    },
+    {
+      "name": "useControllableValue",
+      "docs": "https://ahooks.js.org/hooks/use-controllable-value",
+      "description": "in some components"
+    },
+    {
+      "name": "useCountDown",
+      "docs": "https://ahooks.js.org/hooks/use-count-down",
+      "description": "a hook for manage countdown"
+    },
+    {
+      "name": "useCounter",
+      "docs": "https://ahooks.js.org/hooks/use-counter",
+      "description": "a hook that manage counter"
+    },
+    {
+      "name": "useCreation",
+      "docs": "https://ahooks.js.org/hooks/use-creation",
+      "description": "`useCreation` is the replacement for `useMemo` or `useRef`"
+    },
+    {
+      "name": "useDebounce",
+      "docs": "https://ahooks.js.org/hooks/use-debounce",
+      "description": "a hook that deal with the debounced value"
+    },
+    {
+      "name": "useDebounceEffect",
+      "docs": "https://ahooks.js.org/hooks/use-debounce-effect",
+      "description": "debounce your `useEffect`"
+    },
+    {
+      "name": "useDebounceFn",
+      "docs": "https://ahooks.js.org/hooks/use-debounce-fn",
+      "description": "a hook that deal with the debounced function"
+    },
+    {
+      "name": "useDeepCompareEffect",
+      "docs": "https://ahooks.js.org/hooks/use-deep-compare-effect",
+      "description": "usage is the same as `useEffect`"
+    },
+    {
+      "name": "useDynamicList",
+      "docs": "https://ahooks.js.org/hooks/use-dynamic-list",
+      "description": "a hook that helps you manage dynamic list and generate unique key for each item"
+    },
+    {
+      "name": "useGetState",
+      "docs": "https://ahooks.js.org/hooks/use-get-state",
+      "description": "add a getter method to the return value of `React.useState` to get the latest value"
+    },
+    {
+      "name": "useHistoryTravel",
+      "docs": "https://ahooks.js.org/hooks/use-history-travel",
+      "description": "a hook to manage state change history"
+    },
+    {
+      "name": "useInfiniteScroll",
+      "docs": "https://ahooks.js.org/hooks/use-infinite-scroll",
+      "description": "useInfiniteScroll encapsulates the common infinite scroll logic"
+    },
+    {
+      "name": "useInterval",
+      "docs": "https://ahooks.js.org/hooks/use-interval",
+      "description": "a hook that handles the `setInterval` timer function"
+    },
+    {
+      "name": "useLatest",
+      "docs": "https://ahooks.js.org/hooks/use-latest",
+      "description": "a Hook that returns the latest value"
+    },
+    {
+      "name": "useLockFn",
+      "docs": "https://ahooks.js.org/hooks/use-lock-fn",
+      "description": "add lock to an async function to prevent parallel executions"
+    },
+    {
+      "name": "useMap",
+      "docs": "https://ahooks.js.org/hooks/use-map",
+      "description": "a hook that can manage the state of Map"
+    },
+    {
+      "name": "useMemoizedFn",
+      "docs": "https://ahooks.js.org/hooks/use-memoized-fn",
+      "description": "hooks for persistent functions"
+    },
+    {
+      "name": "useMount",
+      "docs": "https://ahooks.js.org/hooks/use-mount",
+      "description": "a hook that executes a function after the component is mounted"
+    },
+    {
+      "name": "usePagination",
+      "docs": "https://ahooks.js.org/hooks/use-pagination",
+      "description": "`usePagination` is implemented based on `useRequest` and encapsulates common paging logic"
+    },
+    {
+      "name": "usePrevious",
+      "docs": "https://ahooks.js.org/hooks/use-previous",
+      "description": "a Hook to return the previous state"
+    },
+    {
+      "name": "useReactive",
+      "docs": "https://ahooks.js.org/hooks/use-reactive",
+      "description": "it offers data reactivity when manipulating states and views"
+    },
+    {
+      "name": "useRequest",
+      "docs": "https://ahooks.js.org/hooks/use-request"
+    },
+    {
+      "name": "useResetState",
+      "docs": "https://ahooks.js.org/hooks/use-reset-state",
+      "description": "useResetState works similar to `React.useState`"
+    },
+    {
+      "name": "useSafeState",
+      "docs": "https://ahooks.js.org/hooks/use-safe-state",
+      "description": "it is exactly the same with `React.useState`"
+    },
+    {
+      "name": "useSelections",
+      "docs": "https://ahooks.js.org/hooks/use-selections",
+      "description": "this hook is used for Checkbox group"
+    },
+    {
+      "name": "useSet",
+      "docs": "https://ahooks.js.org/hooks/use-set",
+      "description": "a hook that can manage the state of Set"
+    },
+    {
+      "name": "useSetState",
+      "docs": "https://ahooks.js.org/hooks/use-set-state",
+      "description": "useSetState works similar to `this.setState` of class component"
+    },
+    {
+      "name": "useThrottle",
+      "docs": "https://ahooks.js.org/hooks/use-throttle",
+      "description": "a hook that deal with the throttled value"
+    },
+    {
+      "name": "useThrottleEffect",
+      "docs": "https://ahooks.js.org/hooks/use-throttle-effect",
+      "description": "throttle your `useEffect`"
+    },
+    {
+      "name": "useThrottleFn",
+      "docs": "https://ahooks.js.org/hooks/use-throttle-fn",
+      "description": "a hook that deal with the throttled function"
+    },
+    {
+      "name": "useTimeout",
+      "docs": "https://ahooks.js.org/hooks/use-timeout",
+      "description": "a hook that handles the `setTimeout` timer function"
+    },
+    {
+      "name": "useToggle",
+      "docs": "https://ahooks.js.org/hooks/use-toggle",
+      "description": "a hook that toggle states"
+    },
+    {
+      "name": "useTrackedEffect",
+      "docs": "https://ahooks.js.org/hooks/use-tracked-effect",
+      "description": "a hook of useEffect that allow us to track which dependencies caused the effect to trigger"
+    },
+    {
+      "name": "useUnmount",
+      "docs": "https://ahooks.js.org/hooks/use-unmount",
+      "description": "a hook that executes the function right before the component is unmounted"
+    },
+    {
+      "name": "useUnmountedRef",
+      "docs": "https://ahooks.js.org/hooks/use-unmounted-ref",
+      "description": "a Hook can be used to get whether the component is unmounted"
+    },
+    {
+      "name": "useUpdate",
+      "docs": "https://ahooks.js.org/hooks/use-update",
+      "description": "a hook that returns a function which can be used to force the component to re-render"
+    },
+    {
+      "name": "useUpdateEffect",
+      "docs": "https://ahooks.js.org/hooks/use-update-effect",
+      "description": "a hook alike `useEffect` but skips running the effect for the first time"
+    },
+    {
+      "name": "useWhyDidYouUpdate",
+      "docs": "https://ahooks.js.org/hooks/use-why-did-you-update",
+      "description": "help developers troubleshoot what changes have caused component rerender"
+    }
+  ]
+}

@@ -8,10 +8,10 @@
     "taro hooks",
     "react hooks"
   ],
-  "main": "./lib/index.js",
   "module": "./es/index.js",
+  "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "unpkg": "dist/ahooks.js",
+  "unpkg": "dist/index.js",
   "sideEffects": false,
   "authors": {
     "name": "xfo79k",
@@ -25,8 +25,7 @@
   "scripts": {
     "build": "gulp --isolatedModules true && webpack-cli",
     "dev": "gulp --w true --isolatedModules true",
-    "dev:ts": "gulp --w true --skip true --isolatedModules true",
-    "postinstall": "node -e \"try{require('./postinstall')}catch(e){}\""
+    "dev:ts": "gulp --w true --skip true --isolatedModules true"
   },
   "files": [
     "dist",
@@ -53,5 +52,8 @@
   "engines": {
     "node": ">=18"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "volta": {
+    "node": "18.20.3"
+  }
 }

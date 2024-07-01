@@ -4,8 +4,8 @@ module.exports = {
   entry: './es/index.js',
   mode: 'production',
   output: {
-    filename: 'ahooks.js',
-    library: 'ahooks',
+    filename: 'index.js',
+    library: 'index',
     libraryTarget: 'umd',
     globalObject: 'this',
     path: path.resolve(__dirname, './dist'),
@@ -17,7 +17,8 @@ module.exports = {
   externals: [
     {
       react: 'React',
-      taro: 'Taro',
+      taro: '@tarojs/taro',
+      lodash: 'lodash',
     },
   ],
 }

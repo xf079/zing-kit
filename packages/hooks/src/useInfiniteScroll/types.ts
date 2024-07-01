@@ -1,5 +1,4 @@
 import type { DependencyList } from 'react';
-import type { BasicTarget } from '../utils/domTarget';
 
 export type Data = { list: any[]; [key: string]: any };
 
@@ -23,7 +22,8 @@ export interface InfiniteScrollResult<TData extends Data> {
 }
 
 export interface InfiniteScrollOptions<TData extends Data> {
-  target?: BasicTarget<Element | Document>;
+  // target?: BasicTarget<Element | Document>;
+  target?: any;
   isNoMore?: (data?: TData) => boolean;
   threshold?: number;
 

@@ -1,4 +1,4 @@
-const commonConfig = require('../../gulpfile');
+const commonConfig = require('./task.series');
 const gulp = require('gulp');
 const fs = require('fs');
 const fse = require('fs-extra');

@@ -58,13 +58,11 @@ function useReactive<S extends Record<string, any>>(initialState: S): S {
   const update = useUpdate();
   const stateRef = useRef<S>(initialState);
 
-  const state = useCreation(() => {
+  return useCreation(() => {
     return observer(stateRef.current, () => {
       update();
     });
   }, []);
-
-  return state;
 }
 
 export default useReactive;
